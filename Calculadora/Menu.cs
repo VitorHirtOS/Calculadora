@@ -43,22 +43,38 @@ namespace Calculadora
 
         // Operações por instância
 
-
-        public double Multiplicar()
+        public double Divisao()
         {
-
-
             try
             {
+                string acao = "";
 
-                Console.WriteLine("Escolha 1 número: ");
-                var a = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Escolha 2 número: ");
-                var b = Convert.ToDouble(Console.ReadLine());
+                if (Continue(ref acao, "Restultado da ação: ") == Response.Sair)
+                {
+                    Console.Clear();
+                    Console.WriteLine((double)Response.Sair);
+                    return 0;
+                }
+                else if (Continue(ref acao, "Restultado da ação: ") == Response.Sucesso)
+                {
+                    Console.Clear();
+                    Console.WriteLine((double)Response.Sucesso);
+                    Console.WriteLine("Escolha 1 número: ");
 
-                Multiplicar multiplicar = new Multiplicar(a, b);
+                    var a = Convert.ToDouble(Console.ReadLine());
 
-                return multiplicar._Denominador * multiplicar._Numerador;
+                    Console.WriteLine("Escolha 2 número: ");
+                    var b = Convert.ToDouble(Console.ReadLine());
+
+                    Dividir dividir = new Dividir(a, b);
+
+                    return dividir._Dividendo / dividir._Divisor;
+
+                }
+                else
+                {
+                    throw new Exception("O erro acorreu no 'Multiplicar'!!!" + (double)Response.Excecao);
+                }
 
             }
             catch (Exception e)
@@ -67,23 +83,102 @@ namespace Calculadora
                 return 0;
             }
 
+        }
+
+        public void Multiplicar(ref Multiplicar multiplicar)
+        {
+            try
+            {
+                string acao = "";
+
+                if (Continue(ref acao, "Restultado da ação: ") == Response.Sair)
+                {
+                    Console.Clear();
+                    Console.WriteLine((double)Response.Sair);
+                }
+                else if (Continue(ref acao, "Restultado da ação: ") == Response.Sucesso)
+                {
+                    Console.Clear();
+                    Console.WriteLine((double)Response.Sucesso);
+                    Console.WriteLine("Escolha 1 número: ");
+
+                    multiplicar._Numerador = Convert.ToDouble(Console.ReadLine());
+
+                    Console.WriteLine("Escolha 2 número: ");
+                    multiplicar._Denominador = Convert.ToDouble(Console.ReadLine());
+
+
+                    Console.WriteLine($"O resultado da operação de multiplicação {multiplicar._Numerador * multiplicar._Denominador}");
+
+                }
+                else
+                {
+                    throw new Exception("O erro acorreu no 'Multiplicar'!!!" + (double)Response.Excecao);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($" Erro e retorno zero {e.Message}");
+            }
+
+        }
+
+        public double Subtrair(ref Subtrair subtrair, string menssage)
+        {
+            try
+            {
+                string acao = "";
+
+                if (Continue(ref acao, "Restultado da ação: ") == Response.Sair)
+                {
+                    Console.Clear();
+                    Console.WriteLine((double)Response.Sair);
+                    return 0;
+                }
+                else if (Continue(ref acao, "Restultado da ação: ") == Response.Sucesso)
+                {
+                    Console.Clear();
+                    Console.WriteLine((double)Response.Sucesso);
+                    Console.WriteLine("Escolha 1 número: ");
+
+                    subtrair._Numerador = Convert.ToDouble(Console.ReadLine());
+
+                    Console.WriteLine("Escolha 2 número: ");
+                    subtrair._Denominador = Convert.ToDouble(Console.ReadLine());
+
+                    var subtracao = subtrair._Numerador - subtrair._Denominador;
+                    Console.WriteLine(menssage + " " + subtracao);
+                    return subtracao;
+
+                }
+                else
+                {
+                    throw new Exception("O erro acorreu no 'Multiplicar'!!!" + (double)Response.Excecao);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($" Erro e retorno zero {e.Message}");
+                return 0;
+            }
 
         }
 
         public Response Continue(ref string acao, string massage)
         {
             Console.WriteLine("Continuar para operação");
-            string temp = Console.ReadLine().ToUpper();
+            acao = Console.ReadLine().ToUpper();
             Console.WriteLine(massage);
             Response retorno;
 
-            if (temp == "S")
+            if (acao == "S")
             {
                 retorno = Response.Sucesso;
             }
             else
             {
-                acao = temp;
                 retorno = Response.Sair;
             }
 
@@ -100,15 +195,23 @@ namespace Calculadora
                 {
                     Console.Clear();
                     return (double)Response.Sair;
+                }else if (Continue(ref acao, "Restultado da ação: ") == Response.Sucesso)
+                {
+                    Console.Clear();
+                    Console.WriteLine((double)Response.Sucesso);
+                    Console.WriteLine("Escolha 1 número: ");
+                    var a = Convert.ToDouble(Console.ReadLine());
+
+                    Console.WriteLine("Escolha 2 número: ");
+                    var b = Convert.ToDouble(Console.ReadLine());
+                    Somar somar = new Somar(a, b);
+                    return somar._Denominador + somar._Numerador;
+                }
+                else
+                {
+                    throw new Exception("O erro acorreu no 'Somar'!!!" + (double)Response.Excecao);
                 }
 
-                Console.WriteLine("Escolha 1 número: ");
-                var a = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Escolha 2 número: ");
-                var b = Convert.ToDouble(Console.ReadLine());
-                Somar somar = new Somar(a, b);
-                Console.Clear();
-                return somar._Denominador + somar._Numerador;
             }
             catch (Exception e)
             {
@@ -155,24 +258,37 @@ namespace Calculadora
                 {
                     case "D":
                         Console.WriteLine("Divisão escolhida");
+                        Console.WriteLine("O resultado é: " + Divisao());
+                        Mensagens("Continuar");
+                        Console.WriteLine("-----------------------");
                         break;
                     case "M":
                         Console.WriteLine("Multiplicação escolhida");
-                        Console.WriteLine("O resultado é: " + Multiplicar());
+                        Multiplicar multiplica = new Multiplicar(0, 0);
+                        Multiplicar(ref multiplica);
+                        Mensagens("Continuar");
+                        Console.WriteLine("-----------------------");
                         break;
                     case "A": 
                         Console.WriteLine("Adição escolhida");
                         Console.WriteLine("O resultado é: " + Somar());
+                        Mensagens("Continuar");
                         Console.WriteLine("-----------------------");
                         break;
                     case "S":
                         Console.WriteLine("Subtração escolhida");
+                        Subtrair subtrair = new Subtrair(0, 0);
+                        Subtrair(ref subtrair, "O resultado da subtração: ");
+                        Mensagens("Continuar");
+                        Console.WriteLine("-----------------------");
                         break;
                     case "E":
                         Sair();
+                        Mensagens("Continuar");
                         break;
                     default: 
                         Console.WriteLine("Opção Inválida!!!");
+                        Mensagens("Continuar");
                         break;
                 }
 

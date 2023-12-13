@@ -11,22 +11,22 @@ namespace Calculadora
         private double denominador;
         private double numerador;
 
-        public double _denominador
+        public double _Denominador
         {
             get { return denominador; }
             set { denominador = value; }
         }
 
-        public double _numerador
+        public double _Numerador
         {
             get { return numerador; }
             set { numerador = value; }
         }
 
-        public Subtrair(double denominador, double numerador)
+        public Subtrair(double pDenominador, double pNumerador)
         {
-            this.denominador = denominador;
-            this.numerador = numerador;
+            this.denominador = pDenominador;
+            this.numerador = pNumerador;
         }
     }
 }
