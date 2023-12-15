@@ -43,7 +43,7 @@ namespace Calculadora
 
         public double Log(double log)
         {
-            return Math.Log(log);
+            return Math.Log10(log);
         }
 
         public double Pow(double pow, double x)
@@ -59,14 +59,9 @@ namespace Calculadora
             {
                 string acao = "";
 
-                if (Continue(ref acao, "Restultado da ação: ") == Response.Sair)
+                if (Continue(ref acao, "Restultado da ação: ") == Response.Sucesso)
                 {
-                    Console.Clear();
-                    Console.WriteLine((double)Response.Sair);
-                    return 0;
-                }
-                else if (Continue(ref acao, "Restultado da ação: ") == Response.Sucesso)
-                {
+
                     Console.Clear();
                     Console.WriteLine((double)Response.Sucesso);
                     Console.WriteLine("Escolha 1 número: ");
@@ -85,7 +80,7 @@ namespace Calculadora
                     {
 
                         Console.WriteLine("Quer realizar uma operação com matemática especial? ");
-                        Console.WriteLine("Exponencial - 1, Logaritmo - 2, arredondamento - 3 e abs - 4");
+                        Console.WriteLine("Exponencial - 1, Logaritmo - 2, arredondamento - 3, abs - 4 ou Sair - S");
 
                         var x = Console.ReadKey(true).KeyChar.ToString().ToUpper();
                         try
@@ -102,10 +97,36 @@ namespace Calculadora
                                     break;
                                 case "2":
                                     Console.WriteLine((double)ResponseEspecial.Logaritmo);
-                                    var resultadoLogaritmo = Log(a);
-                                    a = resultadoLogaritmo;
-                                    Console.WriteLine(a);
-                                    break;
+                                    Console.WriteLine("Opção de logartimo: Único - 1  EscolhaLog - 2 AmbosLog - 3");
+                                    char opcao = Convert.ToChar(Console.ReadLine());
+
+                                    if (opcao == '1')
+                                    {
+                                        var resultadoLogaritmo = Log(a / b);
+                                        Console.WriteLine(resultadoLogaritmo);
+                                        return a / b;
+                                    }
+                                    else if (opcao == '2')
+                                    {
+                                        Console.WriteLine("Escolha uma das duas para aplicar o logaritmo");
+                                        string QualOpcao = Console.ReadLine().ToUpper();
+                                        if (QualOpcao == "A")
+                                        {
+                                            var resultadoLogaritmo2 = Log(a) / b;
+                                            return resultadoLogaritmo2;
+                                        }
+                                        else
+                                        {
+                                            var resultadoLogaritmo2 = a / Log(b);
+                                            return resultadoLogaritmo2;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Nenhuma opção escolhida é 'AmbosLog' ");
+                                        return Log(a) / Log(b);
+                                    }
+
                                 case "3":
                                     Console.WriteLine((double)ResponseEspecial.Arrendodamento);
                                     var resultadoFloor = Floor(a);
@@ -146,7 +167,7 @@ namespace Calculadora
                                     break;
                             }
                         }
-                        catch(Exception e)
+                        catch (Exception e)
                         {
                             Console.WriteLine($"Mensagem de erro {e}");
                         }
@@ -155,6 +176,13 @@ namespace Calculadora
                     resultadoDivisao = a / b;
                     return resultadoDivisao;
 
+
+                }
+                else if (Continue(ref acao, "Restultado da ação: ") == Response.Sair)
+                {
+                    Console.Clear();
+                    Console.WriteLine((double)Response.Sair);
+                    return 0;
                 }
                 else
                 {
@@ -216,10 +244,35 @@ namespace Calculadora
                                     Console.WriteLine(multiplicar._Numerador);
                                     break;
                                 case "2":
-                                    Console.WriteLine((double)ResponseEspecial.Logaritmo);
-                                    var resultadoLogaritmo = Log(multiplicar._Numerador);
-                                    multiplicar._Numerador = resultadoLogaritmo;
-                                    Console.WriteLine(multiplicar._Numerador);
+                                    Console.WriteLine("Opção de logartimo: Único - 1  EscolhaLog - 2 AmbosLog - 3");
+                                    char opcao = Convert.ToChar(Console.ReadLine());
+
+                                    if (opcao == '1')
+                                    {
+                                        var resultadoLogaritmo = Log(multiplicar._Numerador / multiplicar._Denominador);
+                                        Console.WriteLine(resultadoLogaritmo);
+                                    }
+                                    else if (opcao == '2')
+                                    {
+                                        Console.WriteLine("Escolha uma das duas para aplicar o logaritmo");
+                                        string QualOpcao = Console.ReadLine().ToUpper();
+                                        if (QualOpcao == "A")
+                                        {
+                                            var resultadoLogaritmo2 = Log(multiplicar._Numerador);
+                                            multiplicar._Numerador = resultadoLogaritmo2;
+                                            Console.WriteLine($"O resultado da operação de multiplicação: {multiplicar._Numerador * multiplicar._Denominador}");
+                                        }
+                                        else
+                                        {
+                                            var resultadoLogaritmo2 = Log(multiplicar._Denominador);
+                                            multiplicar._Denominador = resultadoLogaritmo2;
+                                            Console.WriteLine($"O resultado da operação de multiplicação: {multiplicar._Numerador * multiplicar._Denominador}");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"Nenhuma opção escolhida é 'AmbosLog' {Log(multiplicar._Numerador) * Log(multiplicar._Denominador)}");
+                                    }
                                     break;
                                 case "3":
                                     Console.WriteLine((double)ResponseEspecial.Arrendodamento);
@@ -327,10 +380,32 @@ namespace Calculadora
                                 break;
                             case "2":
                                 Console.WriteLine((double)ResponseEspecial.Logaritmo);
-                                var resultadoLogaritmo = Log(subtrair._Numerador);
-                                subtrair._Numerador = resultadoLogaritmo;
-                                Console.WriteLine(subtrair._Numerador);
-                                break;
+                                Console.WriteLine("Opção de logartimo: Único - 1  EscolhaLog - 2 AmbosLog - 3");
+                                char opcao = Convert.ToChar(Console.ReadLine());
+
+                                if (opcao == '1')
+                                {
+                                    var resultadoLogaritmo = Log(subtrair._Numerador - subtrair._Denominador);
+                                    return resultadoLogaritmo;
+                                }
+                                else if (opcao == '2')
+                                {
+                                    Console.WriteLine("Escolha uma das duas para aplicar o logaritmo");
+                                    string QualOpcao = Console.ReadLine().ToUpper();
+                                    if (QualOpcao == "A")
+                                    {
+                                        return Log(subtrair._Numerador) - subtrair._Denominador;
+                                    }
+                                    else
+                                    {
+                                        return subtrair._Numerador - Log(subtrair._Denominador);
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Nenhuma opção escolhida é 'AmbosLog'");
+                                    return Log(subtrair._Numerador) / Log(subtrair._Denominador);
+                                }
                             case "3":
                                 Console.WriteLine((double)ResponseEspecial.Arrendodamento);
                                 var resultadoFloor = Floor(subtrair._Numerador);
@@ -395,7 +470,7 @@ namespace Calculadora
 
         public Response Continue(ref string acao, string massage)
         {
-            Console.WriteLine("Continuar para operação");
+            Console.WriteLine("Continuar para operação aperte 'S'");
             acao = Console.ReadLine().ToUpper();
             Console.WriteLine(massage);
             Response retorno;
@@ -456,11 +531,32 @@ namespace Calculadora
                                     Console.WriteLine(a);
                                     break;
                                 case "2":
-                                    Console.WriteLine((double)ResponseEspecial.Logaritmo);
-                                    var resultadoLogaritmo = Log(a);
-                                    a = resultadoLogaritmo;
-                                    Console.WriteLine(a);
-                                    break;
+                                    Console.WriteLine("Opção de logartimo: Único - 1  EscolhaLog - 2 AmbosLog - 3");
+                                    char opcao = Convert.ToChar(Console.ReadLine());
+
+                                    if (opcao == '1')
+                                    {
+                                        var resultadoLogaritmo = Log(a + b);
+                                        return resultadoLogaritmo;
+                                    }
+                                    else if (opcao == '2')
+                                    {
+                                        Console.WriteLine("Escolha uma das duas para aplicar o logaritmo");
+                                        string QualOpcao = Console.ReadLine().ToUpper();
+                                        if (QualOpcao == "A")
+                                        {
+                                            return Log(a) + b;
+                                        }
+                                        else
+                                        {
+                                            return a + Log(b);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"Nenhuma opção escolhida é 'AmbosLog'");
+                                        return Log(a) + Log(b);
+                                    }
                                 case "3":
                                     Console.WriteLine((double)ResponseEspecial.Arrendodamento);
                                     var resultadoFloor = Floor(a);
