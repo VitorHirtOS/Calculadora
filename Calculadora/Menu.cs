@@ -17,6 +17,16 @@ namespace Calculadora
             Excecao = 400
         }
 
+        // ------------ Resposta de requisição especiais --------------
+
+        public enum ResponseEspecial
+        {
+            Exponencial = 950,
+            Abs = 570,
+            Logaritmo = 102,
+            Arrendodamento = 750
+        }
+
         // ------------ Operações Matemáticas ---------------- 
 
         // ---- Operações por interface
@@ -68,7 +78,82 @@ namespace Calculadora
 
                     Dividir dividir = new Dividir(a, b);
 
-                    return dividir._Dividendo / dividir._Divisor;
+                    double resultadoDivisao = 0;
+
+                    string i = "";
+                    while (i != "S")
+                    {
+
+                        Console.WriteLine("Quer realizar uma operação com matemática especial? ");
+                        Console.WriteLine("Exponencial - 1, Logaritmo - 2, arredondamento - 3 e abs - 4");
+
+                        var x = Console.ReadKey(true).KeyChar.ToString().ToUpper();
+                        try
+                        {
+                            switch (x)
+                            {
+                                case "1":
+                                    Console.WriteLine((double)ResponseEspecial.Exponencial);
+                                    Console.WriteLine("Número para expoente: ");
+                                    int exponencial = int.Parse(Console.ReadLine());
+                                    var resultadoExpoente = Pow(a, exponencial);
+                                    a = resultadoExpoente;
+                                    Console.WriteLine(a);
+                                    break;
+                                case "2":
+                                    Console.WriteLine((double)ResponseEspecial.Logaritmo);
+                                    var resultadoLogaritmo = Log(a);
+                                    a = resultadoLogaritmo;
+                                    Console.WriteLine(a);
+                                    break;
+                                case "3":
+                                    Console.WriteLine((double)ResponseEspecial.Arrendodamento);
+                                    var resultadoFloor = Floor(a);
+                                    a = resultadoFloor;
+                                    Console.WriteLine(a);
+                                    break;
+                                case "4":
+                                    Console.WriteLine((double)ResponseEspecial.Abs);
+
+                                    Console.WriteLine("Realizar o ABS no numerador - N ou denominador");
+                                    var Context = Console.ReadLine().ToUpper();
+
+                                    if (Context == "N")
+                                    {
+                                        var resultadoAbs = Abs(a);
+                                        a = resultadoAbs;
+                                        Console.WriteLine(a);
+                                    }
+                                    else if (Context == "D")
+                                    {
+                                        var resultadoAbs = Abs(b);
+                                        b = resultadoAbs;
+                                        Console.WriteLine(b);
+                                    }
+                                    else
+                                    {
+                                        var resultadoAbs = Abs(resultadoDivisao);
+                                        resultadoDivisao = resultadoAbs;
+                                        Console.WriteLine(resultadoDivisao);
+                                    }
+                                    break;
+                                case "S":
+                                    Console.WriteLine("Encerrando o programa especial");
+                                    i = x;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção desconhecida!!!");
+                                    break;
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                            Console.WriteLine($"Mensagem de erro {e}");
+                        }
+                    }
+
+                    resultadoDivisao = a / b;
+                    return resultadoDivisao;
 
                 }
                 else
@@ -107,9 +192,84 @@ namespace Calculadora
                     Console.WriteLine("Escolha 2 número: ");
                     multiplicar._Denominador = Convert.ToDouble(Console.ReadLine());
 
+                    double resultadoMultiplicacao = 0;
 
-                    Console.WriteLine($"O resultado da operação de multiplicação {multiplicar._Numerador * multiplicar._Denominador}");
+                    string i = "";
+                    while (i != "S")
+                    {
 
+                        Console.WriteLine("Quer realizar uma operação com matemática especial? ");
+                        Console.WriteLine("Exponencial - 1, Logaritmo - 2, arredondamento - 3 e abs - 4");
+
+                        var x = Console.ReadKey(true).KeyChar.ToString().ToUpper();
+
+                        try
+                        {
+                            switch (x)
+                            {
+                                case "1":
+                                    Console.WriteLine((double)ResponseEspecial.Exponencial);
+                                    Console.WriteLine("Número para expoente: ");
+                                    int exponencial = int.Parse(Console.ReadLine());
+                                    var resultadoExpoente = Pow(multiplicar._Numerador, exponencial);
+                                    multiplicar._Numerador = resultadoExpoente;
+                                    Console.WriteLine(multiplicar._Numerador);
+                                    break;
+                                case "2":
+                                    Console.WriteLine((double)ResponseEspecial.Logaritmo);
+                                    var resultadoLogaritmo = Log(multiplicar._Numerador);
+                                    multiplicar._Numerador = resultadoLogaritmo;
+                                    Console.WriteLine(multiplicar._Numerador);
+                                    break;
+                                case "3":
+                                    Console.WriteLine((double)ResponseEspecial.Arrendodamento);
+                                    var resultadoFloor = Floor(multiplicar._Numerador);
+                                    multiplicar._Numerador = resultadoFloor;
+                                    Console.WriteLine(multiplicar._Numerador);
+                                    break;
+                                case "4":
+                                    Console.WriteLine((double)ResponseEspecial.Abs);
+
+                                    Console.WriteLine("Realizar o ABS no numerador - N ou denominador");
+                                    var Context = Console.ReadLine().ToUpper();
+
+                                    if (Context == "N")
+                                    {
+                                        var resultadoAbs = Abs(multiplicar._Numerador);
+                                        multiplicar._Numerador = resultadoAbs;
+                                        Console.WriteLine(multiplicar._Numerador);
+                                    }
+                                    else if (Context == "D")
+                                    {
+                                        var resultadoAbs = Abs(multiplicar._Numerador);
+                                        multiplicar._Numerador = resultadoAbs;
+                                        Console.WriteLine(multiplicar._Numerador);
+                                    }
+                                    else
+                                    {
+                                        var resultadoAbs = Abs(resultadoMultiplicacao);
+                                        resultadoMultiplicacao = resultadoAbs;
+                                        Console.WriteLine(resultadoMultiplicacao);
+                                    }
+
+                                    break;
+                                case "S":
+                                    Console.WriteLine("Encerrando o programa especial");
+                                    i = x;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção desconhecida!!!");
+                                    break;
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                            Console.WriteLine($"Mensagem de erro multiplicação {e}");
+                        }
+                        
+                    }
+                    resultadoMultiplicacao = multiplicar._Numerador * multiplicar._Denominador;
+                    Console.WriteLine($"O resultado da multiplicação: {resultadoMultiplicacao}");
                 }
                 else
                 {
@@ -141,13 +301,80 @@ namespace Calculadora
                     Console.Clear();
                     Console.WriteLine((double)Response.Sucesso);
                     Console.WriteLine("Escolha 1 número: ");
-
                     subtrair._Numerador = Convert.ToDouble(Console.ReadLine());
 
                     Console.WriteLine("Escolha 2 número: ");
                     subtrair._Denominador = Convert.ToDouble(Console.ReadLine());
 
-                    var subtracao = subtrair._Numerador - subtrair._Denominador;
+                    double subtracao = 0;
+                    string i = "";
+                    while (i != "S")
+                    {
+
+                        Console.WriteLine("Quer realizar uma operação com matemática especial? ");
+                        Console.WriteLine("Exponencial - 1, Logaritmo - 2, arredondamento - 3 e abs - 4");
+
+                        var x = Console.ReadKey(true).KeyChar.ToString().ToUpper();
+                        switch (x)
+                        {
+                            case "1":
+                                Console.WriteLine((double)ResponseEspecial.Exponencial);
+                                Console.WriteLine("Número para expoente: ");
+                                int exponencial = int.Parse(Console.ReadLine());
+                                var resultadoExpoente = Pow(subtrair._Numerador, exponencial);
+                                subtrair._Numerador = resultadoExpoente;
+                                Console.WriteLine(subtrair._Numerador);
+                                break;
+                            case "2":
+                                Console.WriteLine((double)ResponseEspecial.Logaritmo);
+                                var resultadoLogaritmo = Log(subtrair._Numerador);
+                                subtrair._Numerador = resultadoLogaritmo;
+                                Console.WriteLine(subtrair._Numerador);
+                                break;
+                            case "3":
+                                Console.WriteLine((double)ResponseEspecial.Arrendodamento);
+                                var resultadoFloor = Floor(subtrair._Numerador);
+                                subtrair._Numerador = resultadoFloor;
+                                Console.WriteLine(subtrair._Numerador);
+                                break;
+                            case "4":
+                                Console.WriteLine((double)ResponseEspecial.Abs);
+
+                                Console.WriteLine("Realizar o ABS no numerador - N ou denominador - D");
+                                var context = Console.ReadKey(true).KeyChar.ToString().ToUpper();
+
+                                if (context == "N")
+                                {
+                                    var resultadoAbs = Abs(subtrair._Numerador);
+                                    subtrair._Numerador = resultadoAbs;
+                                }
+                                else if(context == "D")
+                                {
+
+                                    var resultadoAbs = Abs(subtrair._Denominador);
+                                    subtrair._Denominador = resultadoAbs;
+                                    Console.WriteLine(subtracao);
+                                }
+                                else
+                                {
+
+                                    var resultadoAbs = Abs(subtracao);
+                                    subtracao = resultadoAbs; 
+                                    Console.WriteLine(subtracao);
+                                }
+                                
+                                break;
+                            case "S":
+                                Console.WriteLine("Encerrando o programa especial");
+                                i = x;
+                                break;
+                            default:
+                                Console.WriteLine("Opção desconhecida!!!");
+                                break;
+                        }
+                    }
+
+                    subtracao = subtrair._Numerador - subtrair._Denominador;
                     Console.WriteLine(menssage + " " + subtracao);
                     return subtracao;
 
@@ -204,8 +431,84 @@ namespace Calculadora
 
                     Console.WriteLine("Escolha 2 número: ");
                     var b = Convert.ToDouble(Console.ReadLine());
+
                     Somar somar = new Somar(a, b);
-                    return somar._Denominador + somar._Numerador;
+
+                    double somando = 0;
+                    string i = "";
+                    while (i != "S")
+                    {   
+
+                        Console.WriteLine("Quer realizar uma operação com matemática especial? ");
+                        Console.WriteLine("Exponencial - 1, Logaritmo - 2, arredondamento - 3 e abs - 4");
+
+                        var x = Console.ReadKey(true).KeyChar.ToString().ToUpper();
+                        try
+                        {
+                            switch (x)
+                            {
+                                case "1":
+                                    Console.WriteLine((double)ResponseEspecial.Exponencial);
+                                    Console.WriteLine("Número para expoente: ");
+                                    int exponencial = int.Parse(Console.ReadLine());
+                                    var resultadoExpoente = Pow(a, exponencial);
+                                    a = resultadoExpoente;
+                                    Console.WriteLine(a);
+                                    break;
+                                case "2":
+                                    Console.WriteLine((double)ResponseEspecial.Logaritmo);
+                                    var resultadoLogaritmo = Log(a);
+                                    a = resultadoLogaritmo;
+                                    Console.WriteLine(a);
+                                    break;
+                                case "3":
+                                    Console.WriteLine((double)ResponseEspecial.Arrendodamento);
+                                    var resultadoFloor = Floor(a);
+                                    a = resultadoFloor;
+                                    Console.WriteLine(a);
+                                    break;
+                                case "4":
+                                    Console.WriteLine((double)ResponseEspecial.Abs);
+
+                                    Console.WriteLine("Realizar o ABS no numerador - N ou denominador - D");
+                                    var context = Console.ReadKey(true).KeyChar.ToString().ToUpper();
+
+                                    if (context == "N")
+                                    {
+                                        var resultadoAbs = Abs(a);
+                                        a = resultadoAbs;
+                                        Console.WriteLine(a);
+                                    }
+                                    else if (context == "D")
+                                    {
+
+                                        var resultadoAbs = Abs(b);
+                                        b = resultadoAbs;
+                                        Console.WriteLine(b);
+                                    }
+                                    else
+                                    {
+                                        var resultadoAbs = Abs(somando);
+                                        somando = resultadoAbs;
+                                        Console.WriteLine(somando);
+                                    }
+                                    break;
+                                case "S":
+                                    Console.WriteLine("Encerrando o programa especial");
+                                    i = x;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção desconhecida!!!");
+                                    break;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"Mensagem de erro soma {e}");
+                        }     
+                    }
+                    somando = a + b;
+                    return somando;
                 }
                 else
                 {
