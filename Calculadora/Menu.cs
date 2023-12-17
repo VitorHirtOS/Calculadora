@@ -651,6 +651,7 @@ namespace Calculadora
                 Console.WriteLine("Digite M para multiplicar: ");
                 Console.WriteLine("Digite A para adição: ");
                 Console.WriteLine("Digite S para subtrair: ");
+                Console.WriteLine("Digite U para Sistema de uniddade: ");
                 Console.WriteLine("Digite E para sair: ");
                 temp = Console.ReadKey(true).KeyChar.ToString().ToUpper();
                 switch (temp)
@@ -678,6 +679,32 @@ namespace Calculadora
                         Console.WriteLine("Subtração escolhida");
                         Subtrair subtrair = new Subtrair(0, 0);
                         Subtrair(ref subtrair, "O resultado da subtração: ");
+                        Mensagens("Continuar");
+                        Console.WriteLine("-----------------------");
+                        break;
+                    case "U":
+                        Console.WriteLine("Sistema de unidade escolhido");
+                        SistemaUnidadeMedida _acao_ = new SistemaUnidadeMedida();
+                        UnidadeMedida _acao2_ = new UnidadeMedida();
+                        Console.WriteLine("--------------");
+                        Console.WriteLine("Unidade: ");
+                        string x = Console.ReadLine();
+                        Console.WriteLine("Valor 1: ");
+                        int v1 = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Valor 2: ");
+                        int v2 = int.Parse(Console.ReadLine());
+                        Console.WriteLine("--------------");
+                        Console.WriteLine("Quer padronizado - P ? caso contrário não aperte P");
+                        string acao = Console.ReadLine().ToUpper();
+                        if (acao == "P")
+                        {
+                            _acao_.Escolha(ref x, ref v1, ref v2);
+                        }
+                        else
+                        {
+                            _acao2_.Escolha(ref x, ref v1, ref v2);
+                        }
+                        
                         Mensagens("Continuar");
                         Console.WriteLine("-----------------------");
                         break;
