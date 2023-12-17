@@ -683,28 +683,34 @@ namespace Calculadora
                         Console.WriteLine("-----------------------");
                         break;
                     case "U":
-                        Console.WriteLine("Sistema de unidade escolhido");
-                        SistemaUnidadeMedida _acao_ = new SistemaUnidadeMedida();
-                        UnidadeMedida _acao2_ = new UnidadeMedida();
-                        Console.WriteLine("--------------");
-                        Console.WriteLine("Unidade: ");
-                        string x = Console.ReadLine();
-                        Console.WriteLine("Valor 1: ");
-                        int v1 = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Valor 2: ");
-                        int v2 = int.Parse(Console.ReadLine());
-                        Console.WriteLine("--------------");
-                        Console.WriteLine("Quer padronizado - P ? caso contrário não aperte P");
-                        string acao = Console.ReadLine().ToUpper();
-                        if (acao == "P")
+                        try
                         {
-                            _acao_.Escolha(ref x, ref v1, ref v2);
-                        }
-                        else
+                            Console.WriteLine("Sistema de unidade escolhido");
+                            SistemaUnidadeMedida _acao_ = new SistemaUnidadeMedida("", 0, 0);
+                            UnidadeMedida _acao2_ = new UnidadeMedida("", 0, 0);
+                            Console.WriteLine("--------------");
+                            Console.WriteLine("Unidade: ");
+                            string x = Console.ReadLine();
+                            Console.WriteLine("Valor 1: ");
+                            int v1 = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Valor 2: ");
+                            int v2 = int.Parse(Console.ReadLine());
+                            Console.WriteLine("--------------");
+                            Console.WriteLine("Quer padronizado - P ? caso contrário não aperte P");
+                            string acao = Console.ReadLine().ToUpper();
+                            if (acao == "P")
+                            {
+                                _acao_.Escolha(ref x, ref v1, ref v2);
+                            }
+                            else
+                            {
+                                _acao2_.Escolha(ref x, ref v1, ref v2);
+                            }
+                        }catch(Exception ex)
                         {
-                            _acao2_.Escolha(ref x, ref v1, ref v2);
+                            Console.WriteLine(ex.Message);
                         }
-                        
+                       
                         Mensagens("Continuar");
                         Console.WriteLine("-----------------------");
                         break;

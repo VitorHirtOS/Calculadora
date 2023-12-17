@@ -13,11 +13,18 @@ namespace Calculadora
         public override string Escolha(ref string acao, ref int valor1, ref int valor2)
         {
 
+
+
             string[] lista = ["KM", "HM", "DAM", "M", "DM", "CM", "MM"];
 
             foreach (string item in lista)
             {
-                Console.WriteLine(item);
+
+                if (acao.ToUpper() == item)
+                {
+                    Console.WriteLine("Opção escolhida: " + item);
+                }
+
             }
 
             try
@@ -41,32 +48,33 @@ namespace Calculadora
                                 if (conversaoKM == "HM")
                                 {
                                     Console.WriteLine($"{lista[0]} x {lista[1]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 10);
+                                   // Console.WriteLine(base.Escolha(ref acao, ref valor1, ref valor2)); Utiliza também
                                 }
                                 else if (conversaoKM == "DAM")
                                 {
                                     Console.WriteLine($"{lista[0]} x {lista[2]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 100);
                                 }
                                 else if (conversaoKM == "M")
                                 {
                                     Console.WriteLine($"{lista[0]} x {lista[3]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 1000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 1000);
                                 }
                                 else if (conversaoKM == "DM")
                                 {
                                     Console.WriteLine($"{lista[0]} x {lista[4]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 10000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 10000);
                                 }
                                 else if (conversaoKM == "CM")
                                 {
                                     Console.WriteLine($"{lista[0]} x {lista[5]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 100000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 100000);
                                 }
                                 else if (conversaoKM == "MM")
                                 {
                                     Console.WriteLine($"{lista[0]} x {lista[6]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 1000000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 1000000);
                                 }
                                 else
                                 {
@@ -81,32 +89,32 @@ namespace Calculadora
                                 if (conversaoHM == "KM")
                                 {
                                     Console.WriteLine($"{lista[1]} x {lista[0]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 10);
                                 }
                                 else if (conversaoHM == "DAM")
                                 {
                                     Console.WriteLine($"{lista[1]} x {lista[2]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 10);
                                 }
                                 else if (conversaoHM == "M")
                                 {
                                     Console.WriteLine($"{lista[1]} x {lista[3]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 100);
                                 }
                                 else if (conversaoHM == "DM")
                                 {
                                     Console.WriteLine($"{lista[1]} x {lista[4]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 1000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 1000);
                                 }
                                 else if (conversaoHM == "CM")
                                 {
                                     Console.WriteLine($"{lista[1]} x {lista[5]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 10000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 10000);
                                 }
                                 else if (conversaoHM == "MM")
                                 {
                                     Console.WriteLine($"{lista[1]} x {lista[6]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 100000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 100000);
                                 }
                                 else
                                 {
@@ -121,32 +129,32 @@ namespace Calculadora
                                 if (conversaoDAM == "KM")
                                 {
                                     Console.WriteLine($"{lista[2]} x {lista[0]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 10);
                                 }
                                 else if (conversaoDAM == "HM")
                                 {
                                     Console.WriteLine($"{lista[2]} x {lista[1]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 100);
                                 }
                                 else if (conversaoDAM == "M")
                                 {
                                     Console.WriteLine($"{lista[2]} x {lista[3]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 10);
                                 }
                                 else if (conversaoDAM == "DM")
                                 {
                                     Console.WriteLine($"{lista[2]} x {lista[4]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 100);
                                 }
                                 else if (conversaoDAM == "CM")
                                 {
                                     Console.WriteLine($"{lista[2]} x {lista[5]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 1000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 1000);
                                 }
                                 else if (conversaoDAM == "MM")
                                 {
                                     Console.WriteLine($"{lista[2]} x {lista[6]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 10000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 10000);
                                 }
                                 else
                                 {
@@ -161,32 +169,32 @@ namespace Calculadora
                                 if (conversaoM == "KM")
                                 {
                                     Console.WriteLine($"{lista[3]} x {lista[0]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 10);
                                 }
                                 else if (conversaoM == "HM")
                                 {
                                     Console.WriteLine($"{lista[3]} x {lista[1]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 100);
                                 }
                                 else if (conversaoM == "DAM")
                                 {
                                     Console.WriteLine($"{lista[3]} x {lista[2]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 1000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 1000);
                                 }
                                 else if (conversaoM == "DM")
                                 {
                                     Console.WriteLine($"{lista[3]} x {lista[4]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 10);
                                 }
                                 else if (conversaoM == "CM")
                                 {
                                     Console.WriteLine($"{lista[3]} x {lista[5]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 100);
                                 }
                                 else if (conversaoM == "MM")
                                 {
                                     Console.WriteLine($"{lista[3]} x {lista[6]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 1000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 1000);
                                 }
                                 else
                                 {
@@ -201,32 +209,32 @@ namespace Calculadora
                                 if (conversaoDM == "KM")
                                 {
                                     Console.WriteLine($"{lista[4]} x {lista[0]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 10);
                                 }
                                 else if (conversaoDM == "HM")
                                 {
                                     Console.WriteLine($"{lista[4]} x {lista[1]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 100);
                                 }
                                 else if (conversaoDM == "DAM")
                                 {
                                     Console.WriteLine($"{lista[4]} x {lista[2]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 1000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 1000);
                                 }
                                 else if (conversaoDM == "M")
                                 {
                                     Console.WriteLine($"{lista[4]} x {lista[3]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 10000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 10000);
                                 }
                                 else if (conversaoDM == "CM")
                                 {
                                     Console.WriteLine($"{lista[4]} x {lista[5]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 10);
                                 }
                                 else if (conversaoDM == "MM")
                                 {
                                     Console.WriteLine($"{lista[4]} x {lista[6]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 100);
                                 }
                                 else
                                 {
@@ -242,32 +250,32 @@ namespace Calculadora
                                 if (conversaoCM == "KM")
                                 {
                                     Console.WriteLine($"{lista[5]} x {lista[0]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 10);
                                 }
                                 else if (conversaoCM == "HM")
                                 {
                                     Console.WriteLine($"{lista[5]} x {lista[1]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 100);
                                 }
                                 else if (conversaoCM == "DAM")
                                 {
                                     Console.WriteLine($"{lista[5]} x {lista[2]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 1000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 1000);
                                 }
                                 else if (conversaoCM == "M")
                                 {
                                     Console.WriteLine($"{lista[5]} x {lista[3]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 10000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 10000);
                                 }
                                 else if (conversaoCM == "DM")
                                 {
                                     Console.WriteLine($"{lista[5]} x {lista[4]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 100000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 100000);
                                 }
                                 else if (conversaoCM == "MM")
                                 {
                                     Console.WriteLine($"{lista[5]} x {lista[6]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) * 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) * 10);
                                 }
                                 else
                                 {
@@ -283,32 +291,32 @@ namespace Calculadora
                                 if (conversaoMM == "KM")
                                 {
                                     Console.WriteLine($"{lista[6]} x {lista[0]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 10);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 10);
                                 }
                                 else if (conversaoMM == "HM")
                                 {
                                     Console.WriteLine($"{lista[6]} x {lista[1]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 100);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 100);
                                 }
                                 else if (conversaoMM == "DAM")
                                 {
                                     Console.WriteLine($"{lista[6]} x {lista[2]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 1000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 1000);
                                 }
                                 else if (conversaoMM == "M")
                                 {
                                     Console.WriteLine($"{lista[6]} x {lista[3]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 10000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 10000);
                                 }
                                 else if (conversaoMM == "DM")
                                 {
                                     Console.WriteLine($"{lista[6]} x {lista[4]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 100000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 100000);
                                 }
                                 else if (conversaoMM == "CM")
                                 {
                                     Console.WriteLine($"{lista[6]} x {lista[5]}");
-                                    Console.WriteLine("Valor padrão do cálculo: " + (valor1 * valor2) / 1000000);
+                                    Console.WriteLine("Valor customizado do cálculo: " + (valor1 * valor2) / 1000000);
                                 }
                                 else
                                 {
@@ -339,5 +347,9 @@ namespace Calculadora
            
         }
 
+        public SistemaUnidadeMedida(string acao, int valor1, int valor2) : base(acao, valor1, valor2)
+        {
+
+        }
     }
 }
