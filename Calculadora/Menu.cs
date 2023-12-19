@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Calculadora.ConversãoTemperatura;
 
 namespace Calculadora
 {
@@ -652,6 +653,7 @@ namespace Calculadora
                 Console.WriteLine("Digite A para adição: ");
                 Console.WriteLine("Digite S para subtrair: ");
                 Console.WriteLine("Digite U para Sistema de uniddade: ");
+                Console.WriteLine("Digite T Sistema de conversão de temperatura: ");
                 Console.WriteLine("Digite E para sair: ");
                 temp = Console.ReadKey(true).KeyChar.ToString().ToUpper();
                 switch (temp)
@@ -714,6 +716,23 @@ namespace Calculadora
                         Mensagens("Continuar");
                         Console.WriteLine("-----------------------");
                         break;
+                    case "T":
+                        Console.WriteLine("Forneça o primeiro valor: ");
+                        int numero1 = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Forneça o segundo valor: ");
+                        int numero2 = int.Parse(Console.ReadLine());
+
+                        CalculosTemperaturas calculosTemperaturas = Soma;
+
+                        Temperatura temperatura = new Temperatura(
+                        calculosTemperaturas,
+                        numero1,
+                        numero2);
+
+                        temperatura.Calculo();
+
+
+                        break;
                     case "E":
                         Sair();
                         Mensagens("Continuar");
@@ -729,6 +748,15 @@ namespace Calculadora
         }
 
         // ---------------------- end ------------------------
+
+        // Delegate -----------------------------------
+
+            public int Soma(int numero1, int numero2)
+            {
+                return 0;
+            }
+
+        // --------------------- end ------------------
 
     }
 }
