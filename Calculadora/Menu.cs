@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -722,7 +723,8 @@ namespace Calculadora
                         Console.WriteLine("Forneça o segundo valor: ");
                         int numero2 = int.Parse(Console.ReadLine());
 
-                        CalculosTemperaturas calculosTemperaturas = Soma;
+                        // Não armazena dados e precisa de um métoodo, Lambada ou return para funcionar desta maneira
+                        CalculosTemperaturas calculosTemperaturas = (numero1, numero2) => numero1 + numero2;
 
                         Temperatura temperatura = new Temperatura(
                         calculosTemperaturas,
@@ -748,15 +750,6 @@ namespace Calculadora
         }
 
         // ---------------------- end ------------------------
-
-        // Delegate -----------------------------------
-
-            public int Soma(int numero1, int numero2)
-            {
-                return 0;
-            }
-
-        // --------------------- end ------------------
 
     }
 }
