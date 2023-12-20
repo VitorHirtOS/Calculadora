@@ -10,6 +10,11 @@ namespace Calculadora
 {
     internal class Menu : IMath_abs, IMath_floor, IMath_log, IMath_pow
     {
+
+        // Data/Hora
+
+        private DateTime data = DateTime.Now;
+
         // ------------ Resposta de requisição --------------
 
         public enum Response
@@ -627,6 +632,7 @@ namespace Calculadora
 
         public void Mensagens(string message)
         {
+            Console.WriteLine("Hora atual: " + data);
             Console.WriteLine(message);
             Console.WriteLine("Pressione qualquer tecla para sair!!!");
             Console.ReadKey();
@@ -704,10 +710,14 @@ namespace Calculadora
                             if (acao == "P")
                             {
                                 _acao_.Escolha(ref x, ref v1, ref v2);
+                                Mensagens("Continuar");
+                                Console.WriteLine("-----------------------");
                             }
                             else
                             {
                                 _acao2_.Escolha(ref x, ref v1, ref v2);
+                                Mensagens("Continuar");
+                                Console.WriteLine("-----------------------");
                             }
                         }catch(Exception ex)
                         {
@@ -732,7 +742,8 @@ namespace Calculadora
                         numero2);
 
                         temperatura.Calculo();
-
+                        Mensagens("Continuar");
+                        Console.WriteLine("-----------------------");
 
                         break;
                     case "E":
