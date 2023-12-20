@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Calculadora.ConversãoTemperatura;
+using static Calculadora.Descontos;
 
 namespace Calculadora
 {
-    internal class Menu : IMath_abs, IMath_floor, IMath_log, IMath_pow
+    internal class Menu : Descontos, IMath_abs, IMath_floor, IMath_log, IMath_pow
     {
 
         // Data/Hora
@@ -661,6 +662,7 @@ namespace Calculadora
                 Console.WriteLine("Digite S para subtrair: ");
                 Console.WriteLine("Digite U para Sistema de uniddade: ");
                 Console.WriteLine("Digite T Sistema de conversão de temperatura: ");
+                Console.WriteLine("Digite O para desconto: ");
                 Console.WriteLine("Digite E para sair: ");
                 temp = Console.ReadKey(true).KeyChar.ToString().ToUpper();
                 switch (temp)
@@ -744,6 +746,67 @@ namespace Calculadora
                         temperatura.Calculo();
                         Mensagens("Continuar");
                         Console.WriteLine("-----------------------");
+
+                        break;
+                    case "O":
+
+
+                        string list = "";
+                        List<string> add = new List<string>();
+                        while (list != "S")
+                        {
+
+                            Console.WriteLine("Opções: ");
+                            Console.WriteLine("1 - Camisa ");
+                            Console.WriteLine("2 - Bermuda ");
+                            Console.WriteLine("3 - Jaqueta: ");
+                            Console.WriteLine("4 - Sapato: ");
+                            Console.WriteLine("5 - Luva: ");
+                            Console.WriteLine("Caso queira sair - S ");
+
+                            Console.WriteLine(list);
+                            Console.WriteLine("Escreva o número e o nome do material: ");
+                            var x = Console.ReadLine();
+
+
+                            add.Add(x);
+
+
+
+                            if (x == "S".ToUpper())
+                            {
+                                Console.WriteLine("Opções escolhidas");
+                                Console.WriteLine(add);
+                                list = "S";
+                            }
+
+                           add.ForEach(x => Console.WriteLine(x));  
+
+                        }
+
+                        string[] listagem = [];
+
+                        add.ForEach(item =>
+                        {
+                            if(add != null)
+                            {
+                                listagem = add.ToArray();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Lista vázia");
+                            }
+                        });
+
+                        Descontos descontos = new Descontos();
+
+                        List<Descontos._Descontos> listaDesconto = new List<Descontos._Descontos>();
+
+                        listaDesconto.Add(new _Descontos(50));
+
+                        var x2 = descontos._Descontos_(ref listagem, ref listaDesconto);
+
+                        Console.WriteLine(x2[0]);
 
                         break;
                     case "E":
