@@ -736,7 +736,7 @@ namespace Calculadora
                         Console.WriteLine("Forneça o segundo valor: ");
                         int numero2 = int.Parse(Console.ReadLine());
 
-                        // Não armazena dados e precisa de um métoodo, Lambada ou return para funcionar desta maneira
+                        // Não armazena dados e precisa de um método, Lambada ou return para funcionar desta maneira
                         CalculosTemperaturas calculosTemperaturas = (numero1, numero2) => numero1 + numero2;
 
                         Temperatura temperatura = new Temperatura(
@@ -816,6 +816,7 @@ namespace Calculadora
                         IMC imc = new IMC();
 
                         imc.CalcularIMC();
+                        imc.ArmUsuario();
 
                         break;
                     case "E":

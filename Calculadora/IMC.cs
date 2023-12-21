@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 /*
  
@@ -18,7 +19,7 @@ namespace Calculadora
     internal class IMC : Descontos
     {
         private int idade;
-        private float altura;
+        private double altura;
         private int peso;
         private string nome;
 
@@ -28,7 +29,7 @@ namespace Calculadora
             get; set;
         }
 
-        public int Altura
+        public double Altura
         {
             get; set;
         }
@@ -38,7 +39,7 @@ namespace Calculadora
             get; set;
         }
 
-        public string Nome
+        public string User
         {
             get; set;
         }
@@ -63,14 +64,32 @@ namespace Calculadora
 
             List<string> usuario = new List<string>();
 
-            var idade_listagem = Idade.ToString();
-            var altura_listagem = Altura.ToString();
-            var peso_listagem = Peso.ToString();
+            var idade_listagem = "Idade: " + Idade.ToString();
+            var altura = "Altura: " + (Altura / 100).ToString();
+            var peso_listagem = "Peso: " + Peso.ToString();
 
-            usuario.Add(Nome);
+            usuario.Add("Nome: " + User);
             usuario.Add(idade_listagem);
-            usuario.Add(altura_listagem);
+            usuario.Add(altura);
             usuario.Add(peso_listagem);
+
+            string url = @"C:\Users\VitorDev\Documents\Códigos";
+            string tipoArquvio = "Dados.txt";
+
+            string caminhoCompleto = Path.Combine(url, tipoArquvio);
+
+            foreach (var u in usuario)
+            {
+                File.AppendAllText(caminhoCompleto, u + Environment.NewLine);
+            }
+
+            if (!Directory.Exists(url))
+            {
+                File.Create(caminhoCompleto);
+                caminhoCompleto.Clone();
+                Console.WriteLine("Caminho criado!!!");
+            }
+
 
         }
 
@@ -107,6 +126,23 @@ namespace Calculadora
                 usuarios.Push(Console.ReadLine());
                 Console.WriteLine("Qual é seu peso: ");
                 usuarios.Push(Console.ReadLine());
+
+                for(var x = 0; x < usuarios.Count; x++)
+                {
+
+                    var index = usuarios.ToArray();
+
+                    idade = Convert.ToInt32(index[0]);
+                    this.altura = Convert.ToDouble(index[1]);
+                    this.peso = Convert.ToInt32(index[2]);
+                    nome = Convert.ToString(index[3]);
+
+                    User = nome;
+                    Idade = idade;
+                    Altura = this.altura;
+                    Peso = this.peso;
+
+                }
 
                 Console.WriteLine("Qual sua ação: 1 - continuar ou 0");
                 var opcao = Console.ReadLine();
