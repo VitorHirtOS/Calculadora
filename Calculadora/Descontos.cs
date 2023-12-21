@@ -10,13 +10,10 @@ namespace Calculadora
     {
 
 
-        enum _Desc
+        public enum _Desc
         {
-            valor1 = 30,
-            valor2 = 40,
-            valor3 = 50 + 40,
-            valor4 = 60,
-            valor5 = 70 + 30,
+            valor1 = 300,
+            valor2 = 404,
         }
 
         public struct _Descontos
@@ -89,8 +86,6 @@ namespace Calculadora
 
                         Console.WriteLine("Sua escolha para desconto: ");
                         int escolha = int.Parse(Console.ReadLine());
-
-
 
                         if (escolha < desconto.Count)
                         {

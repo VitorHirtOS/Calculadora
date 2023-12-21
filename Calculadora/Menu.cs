@@ -9,7 +9,7 @@ using static Calculadora.Descontos;
 
 namespace Calculadora
 {
-    internal class Menu : Descontos, IMath_abs, IMath_floor, IMath_log, IMath_pow
+    internal class Menu : IMath_abs, IMath_floor, IMath_log, IMath_pow
     {
 
         // Data/Hora
@@ -663,6 +663,7 @@ namespace Calculadora
                 Console.WriteLine("Digite U para Sistema de uniddade: ");
                 Console.WriteLine("Digite T Sistema de conversão de temperatura: ");
                 Console.WriteLine("Digite O para desconto: ");
+                Console.WriteLine("Digite I prar IMC: ");
                 Console.WriteLine("Digite E para sair: ");
                 temp = Console.ReadKey(true).KeyChar.ToString().ToUpper();
                 switch (temp)
@@ -807,6 +808,14 @@ namespace Calculadora
                         var x2 = descontos._Descontos_(ref listagem, ref listaDesconto);
 
                         Console.WriteLine(x2[0]);
+
+                        break;
+                    case "I":
+                        Console.WriteLine("Opção escolhida IMC");
+
+                        IMC imc = new IMC();
+
+                        imc.CalcularIMC();
 
                         break;
                     case "E":
