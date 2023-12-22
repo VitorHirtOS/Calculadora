@@ -68,10 +68,12 @@ namespace Calculadora
             var altura = "Altura: " + (Altura / 100).ToString();
             var peso_listagem = "Peso: " + Peso.ToString();
 
+            usuario.Add("------------- Usuário -------------\n");
             usuario.Add("Nome: " + User);
             usuario.Add(idade_listagem);
             usuario.Add(altura);
             usuario.Add(peso_listagem);
+            usuario.Add("\n------------ Finalizado -----------\n");
 
             string url = @"C:\Users\VitorDev\Documents\Códigos";
             string tipoArquvio = "Dados.txt";
@@ -86,7 +88,6 @@ namespace Calculadora
             if (!Directory.Exists(url))
             {
                 File.Create(caminhoCompleto);
-                caminhoCompleto.Clone();
                 Console.WriteLine("Caminho criado!!!");
             }
 
@@ -118,6 +119,15 @@ namespace Calculadora
 
                 Stack<string> usuarios = new Stack<string>();
 
+                Console.WriteLine("Qual sua ação: 1 - continuar ou 0");
+                var opcao = Console.ReadLine();
+
+                if (Response(opcao) != _Desc.valor1)
+                {
+                    Console.WriteLine("Encerrando!!!");
+                    return 0;
+                }
+
                 Console.WriteLine("Qual o seu nome: ");
                 usuarios.Push(Console.ReadLine());
                 Console.WriteLine("Qual é sua idade: ");
@@ -144,9 +154,6 @@ namespace Calculadora
 
                 }
 
-                Console.WriteLine("Qual sua ação: 1 - continuar ou 0");
-                var opcao = Console.ReadLine();
-
                 double acao;
                 string[] indice = usuarios.ToArray();
 
@@ -159,33 +166,38 @@ namespace Calculadora
                 if (acao < 18.50 && Response(opcao) == _Desc.valor1)
                 {
                     Messagem();
+                    ArmUsuario();
+                    
                     Console.WriteLine($"\nResultado da ação: " + Math.Round(acao, 2) + "\n");
                 }
                 else if (acao > 25 || acao < 29.9 && Response(opcao) == _Desc.valor1)
                 {
                     Messagem();
+                    ArmUsuario();
                     Console.WriteLine($"\nResultado da ação: " + Math.Round(acao, 2) + "\n");
                 }
                 else if (acao > 30 || acao < 34.9 && Response(opcao) == _Desc.valor1)
                 {
                     Messagem();
+                    ArmUsuario();
                     Console.WriteLine($"\nResultado da ação: " + Math.Round(acao, 2) + "\n");
                 }
                 else if (acao > 35 || acao < 39.9 && Response(opcao) == _Desc.valor1) 
                 {
                     Messagem();
+                    ArmUsuario();
                     Console.WriteLine($"\nResultado da ação: " + Math.Round(acao, 2) + "\n");
                 }
-                else if (acao > 40)
+                else if (acao > 40 && Response(opcao) == _Desc.valor1)
                 {
                     Messagem();
+                    ArmUsuario();
                     Console.WriteLine($"\nResultado da ação: " + Math.Round(acao, 2) + "\n");
                 }
                 else if (Response(opcao) != _Desc.valor1)
                 {
                     stop = "S";
                     Console.WriteLine("Encerrando!!!");
-                    return 0;
                 }
                 else
                 {

@@ -9,7 +9,7 @@ using static Calculadora.Descontos;
 
 namespace Calculadora
 {
-    internal class Menu : IMath_abs, IMath_floor, IMath_log, IMath_pow
+    internal class Menu : IMath_abs, IMath_floor, IMath_log, IMath_pow, Historico
     {
 
         // Data/Hora
@@ -816,9 +816,12 @@ namespace Calculadora
                         IMC imc = new IMC();
 
                         imc.CalcularIMC();
-                        imc.ArmUsuario();
 
                         break;
+                    case "H":
+                        Console.WriteLine("Escolha (Histórico)");
+                        Historico.Salvar();
+                        continue;
                     case "E":
                         Sair();
                         Mensagens("Continuar");
