@@ -17,7 +17,7 @@ namespace Calculadora
 
             Console.WriteLine("--------- Histórico ----------");
 
-            string url = @"C:\Users\VitorDev\Documents\Códigos";
+            string url = @"/home/vitordev/Documentos/C#Treino/Calculadora/Calculadora/bin/Debug/net8.0";
             string tipoArquvio = "Historico.txt";
 
             string caminhoCompleto = Path.Combine(url, tipoArquvio);

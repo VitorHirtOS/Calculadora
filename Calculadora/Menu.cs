@@ -672,7 +672,8 @@ namespace Calculadora
                 Console.WriteLine("Digite U para Sistema de uniddade: ");
                 Console.WriteLine("Digite T Sistema de conversão de temperatura: ");
                 Console.WriteLine("Digite O para desconto: ");
-                Console.WriteLine("Digite I prar IMC: ");
+                Console.WriteLine("Digite I para IMC: ");
+                Console.WriteLine("Digite Y para Cliente: ");
                 Console.WriteLine("Digite E para sair: ");
                 temp = Console.ReadKey(true).KeyChar.ToString().ToUpper();
                 switch (temp)
@@ -827,9 +828,11 @@ namespace Calculadora
                         imc.CalcularIMC();
 
                         break;
-                    case "H":
-                        Console.WriteLine("Escolha (Histórico)");
-                        continue;
+                    case "Y":
+                        Console.WriteLine("Escolha Cliente");
+                        SystemClient systemClient = new SystemClient("", 0, 0, "", "", "");
+                        systemClient.Cliente();
+                        break;
                     case "E":
                         Sair();
                         Mensagens("Continuar");

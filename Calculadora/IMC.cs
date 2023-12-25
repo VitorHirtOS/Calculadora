@@ -75,7 +75,7 @@ namespace Calculadora
             usuario.Add(peso_listagem);
             usuario.Add("\n------------ Finalizado -----------\n");
 
-            string url = @"C:\Users\VitorDev\Documents\Códigos";
+            string url = @"/home/vitordev/Documentos/C#Treino/Calculadora/Calculadora/bin/Debug/net8.0";
             string tipoArquvio = "Dados.txt";
 
             string caminhoCompleto = Path.Combine(url, tipoArquvio);
