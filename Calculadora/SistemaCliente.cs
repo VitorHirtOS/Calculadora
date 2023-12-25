@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Calculadora
 {
-    
+    [DataContract]
     class SystemClient : Cadastros{
 
         public void Cliente(){
