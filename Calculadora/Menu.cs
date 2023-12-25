@@ -512,8 +512,14 @@ namespace Calculadora
                     Console.WriteLine("Escolha 1 número: ");
                     var a = Convert.ToDouble(Console.ReadLine());
 
+                    List<string> list = new List<string>();
+
                     Console.WriteLine("Escolha 2 número: ");
                     var b = Convert.ToDouble(Console.ReadLine());
+
+                    list.Add("------ Somar -------");
+                    list.Add("Primeiro número soma: " + a.ToString());
+                    list.Add("Segundo número soma: " + b.ToString());
 
                     Somar somar = new Somar(a, b);
 
@@ -523,7 +529,7 @@ namespace Calculadora
                     {   
 
                         Console.WriteLine("Quer realizar uma operação com matemática especial? ");
-                        Console.WriteLine("Exponencial - 1, Logaritmo - 2, arredondamento - 3 e abs - 4");
+                        Console.WriteLine("Exponencial - 1, Logaritmo - 2, arredondamento - 3 e abs - 4 ou - S para encerrar");
 
                         var x = Console.ReadKey(true).KeyChar.ToString().ToUpper();
                         try
@@ -612,6 +618,9 @@ namespace Calculadora
                         }     
                     }
                     somando = a + b;
+                    list.Add("Resultado da soma: " + somando.ToString());
+                    list.Add("------ End -------");
+                    Historico.Salvar(list);
                     return somando;
                 }
                 else
@@ -820,7 +829,6 @@ namespace Calculadora
                         break;
                     case "H":
                         Console.WriteLine("Escolha (Histórico)");
-                        Historico.Salvar();
                         continue;
                     case "E":
                         Sair();

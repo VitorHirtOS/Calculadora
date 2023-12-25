@@ -10,7 +10,7 @@ namespace Calculadora
     internal interface Historico
     {
 
-        public static void Salvar()
+        public static string Salvar(List<string> lista)
         {
 
             DateTime dateTime = DateTime.Now;
@@ -18,21 +18,69 @@ namespace Calculadora
             Console.WriteLine("--------- Histórico ----------");
 
             string url = @"C:\Users\VitorDev\Documents\Códigos";
-            string nomeArquivo = "Historico.txt";
+            string tipoArquvio = "Historico.txt";
 
-            Path.Combine(url, nomeArquivo);
+            string caminhoCompleto = Path.Combine(url, tipoArquvio);
 
-            FileStream fileStream = File.Create(url);
-
-            File.WriteAllText(url, nomeArquivo);
-
-            if (Directory.Exists(url))
+            foreach (var u in lista)
             {
-                fileStream.Close();
+                File.AppendAllText(caminhoCompleto, u + Environment.NewLine);
             }
 
+            if (!Directory.Exists(url))
+            {
+                File.Create(caminhoCompleto);
+                Console.WriteLine("Caminho criado!!!");
+            }
+
+            Console.WriteLine("Quer ler o histórico? ");
+            Console.WriteLine("|-------------------------------|");
+            Console.WriteLine("|      |                     |");
+            Console.WriteLine("|     |                       |");
+            Console.WriteLine("|    |                         |");
+            Console.WriteLine("|   |     ! ! !       !  ! !    |");
+            Console.WriteLine("|   |   !       !    !       !  |");
+            Console.WriteLine("|   |   !   +   !    !   +   !  |");
+            Console.WriteLine("|   |   !       !    !       !  |");
+            Console.WriteLine("|   |     ! ! !        ! ! !    |");
+            Console.WriteLine("|   |                           |");
+            Console.WriteLine("|   |             ++            |");
+            Console.WriteLine("|    |                         |");
+            Console.WriteLine("|     |       ++++++++++      |");
+            Console.WriteLine("|      |                     |");
+            Console.WriteLine("|       |                   |");
+            Console.WriteLine("|        |_________________|");
+            Console.WriteLine("|---------------------------|");
+            Console.WriteLine("|---------------------------|");
+            Console.WriteLine("|           MENU            |");
+            Console.WriteLine("|    COLOQUE - S PARA SIM   |");
+            Console.WriteLine("|    COLOQUE - N PARA NÃO   |");
+            Console.WriteLine("|           FINAL           |");
+            Console.WriteLine("|---------------------------|");
+            string acao = Console.ReadLine().ToUpper(); ;
 
             Console.WriteLine("------------ End -------------");
+
+
+            try
+            {
+                if (acao == "S")
+                {
+                    Console.WriteLine(File.ReadAllText(caminhoCompleto));
+                }
+                else
+                {
+                    return caminhoCompleto;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return caminhoCompleto;
+
+            }
+
+            return caminhoCompleto;
 
         }
 
